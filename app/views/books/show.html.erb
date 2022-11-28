@@ -1,8 +1,18 @@
 
 <div>
+  <%= flash[:create] %>
+</div>
+
+<div>
+  <%= flash[:update] %>
+</div>
+
+
+<div>
   <p>title：<%= @book.title %></p>
   <p>説明：<%= @book.body %></p>
   <!--<p>投稿ユーザー画像：<%#= image_tag 'sample-author1.jpg' %></p>-->
   <p>ユーザーネーム：<%= @book.user.name %></p>
-  <p>投稿日：<%= @book.created_at.strftime('%Y/%m/%d') %></p>
+  <%= link_to "Edit", edit_book_path(@book.id) %>
+  <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 </div>
