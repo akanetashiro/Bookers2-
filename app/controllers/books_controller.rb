@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  
+   before_action :is_matching_login_user, only: [:edit, :update]
+   
   def new
     @book = Book.new
   end
@@ -22,7 +25,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id]) 
   end
   
-  before_action :is_matching_login_user, only: [:edit, :update]
 
   def edit
     is_matching_login_user
