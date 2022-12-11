@@ -1,42 +1,6 @@
 <main>
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-md-3">
-      <h2>User info</h2>
-      <!--<img src="">-->
-      <table class="table">
-        <tbody>
-          <tr></tr>
-          <tr>
-            <th>name</th>
-            <th>aaa</th>
-          </tr>
-          <tr>
-            <th>introduction</th>
-            <th></th>
-          </tr>
-        </tbody>
-      </table>
-      <div class="row">
-        <a class="btn btn-outline-secondary btn-block edit_user_path" href="">
-          <svg class="svg-inline--fa fa-user-cog fa-w-20" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-cog" role="img" xmlns="" viewBox="0 0 640 512" data-fa-i2svg>
-            ::before
-            <path fill="currentColor" d=""></path>
-          </svg>
-        </a>
-      </div>
-      <h2 class="mt-3">New Book</h2>
-      <form action="/books" accept-charset="UTF-8" method="post">
-        <input type="hidden" name="authenticity_token" value="" autocomplete="off">
-        <div class="form-group">
-          <label for="book_opinion">Opinion</label>
-          <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
-        </div>
-        <div class="form-group">
-          <input type="submit" name="commit" value="Create Book" class="btn btn-succes" data-disable-with="Create Book">
-        </div>
-      </form>
-    </div>
+<%= render 'users/show' %>
+ 
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
@@ -73,15 +37,3 @@
 
 
 
-<% @books.each do |book| %>
-
-<div>
-  <span>
-    <%= link_to book.title, "/books/#{book.id}" %>
-  </span>
-  <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-  <p>title：<%= book.title %></p>
-  <p>opinion：<%= book.body %></p>
-  <p><%= book.user.name %></p>
-</div>
- <% end %>

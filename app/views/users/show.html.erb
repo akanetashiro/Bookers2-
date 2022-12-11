@@ -1,15 +1,15 @@
 <div>
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
+  
 </div>
 
 <% @books.each do |book| %>
 <div>
-  <%= link_to book_path(book.id) do %>
-  <% end %>
+  <%= link_to book_path(book.id) %>
   <p><%= image_tag book.user.get_profile_image(100,100) %></p>
   <p><%= book.title %></p>
   <p><%= book.body %></p>
-  <p><%= post_image.user.name %></p>
+  <p><%= book.user.name %></p>
 </div>
 <% end %>
