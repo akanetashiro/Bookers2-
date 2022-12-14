@@ -7,12 +7,36 @@
   <%= flash[:update] %>
 </div>
 
+<%= render 'users/show' %>
 
-<div>
-  <p>title：<%= @book.title %></p>
-  <p>説明：<%= @book.body %></p>
-  <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-  <p>ユーザーネーム：<%= @book.user.name %></p>
-  <%= link_to "Edit", edit_book_path(@book.id) %>
-  <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<div class="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <a href="/users/#{user.id}">
+            <img src="">
+            <br>
+            "name"
+          </a>
+        </td>
+        <td><%= @book.title %></td>
+        <td><%= @book.body %></td>
+        <td>
+          <a class="btn btn-sm btn-success edit_book_path" href="/books/#{book.id}/edit">Edit</a>
+        </td>
+        <td>
+          <a data-confirm = "本当に削除しますか？" class="btn btn-sm btn-danger destroy_book_path" rel="nofollow" data-method="delete" href="/book/#{book.id}">Destroy</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!--<p>title：<%#= @book.title %></p>-->
+  <!--<p>Opinion：<%#= @book.body %></p>-->
+  <!--<p><%#= image_tag @book.user.get_profile_image(100,100) %></p>-->
+  <!--<p>ユーザーネーム：<%#= @book.user.name %></p>-->
+  <!--<%#= link_to "Edit", edit_book_path(@book.id) %>-->
+  <!--<%#= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>-->
 </div>
