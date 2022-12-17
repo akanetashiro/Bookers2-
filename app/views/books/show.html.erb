@@ -7,7 +7,7 @@
   <%= flash[:update] %>
 </div>
 
-<%= render 'users/show' %>
+<%= render 'users/show' , user: @user %>
 
 <div class="col-md-8 offset-md-1">
   <h2>Book detail</h2>
@@ -15,19 +15,27 @@
     <tbody>
       <tr>
         <td>
-          <a href="/users/#{user.id}">
-            <img src="">
+          <%=link_to user_path do %>
+            <%= image_tag @book.user.get_profile_image(100,100) %>
             <br>
-            "name"
-          </a>
+            <%= @user.name %>
+          <% end %>
         </td>
-        <td><%= @book.title %></td>
+        <td>
+          <%= link_to book_path(@book.id) do %>
+            <%= @book.title %>
+          <% end %>
+          </td>
         <td><%= @book.body %></td>
         <td>
-          <a class="btn btn-sm btn-success edit_book_path" href="/books/#{book.id}/edit">Edit</a>
+            <% if @book.user == current_user %>
+              <%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-sm btn-success" %>
+            <% end %>
         </td>
         <td>
-          <a data-confirm = "本当に削除しますか？" class="btn btn-sm btn-danger destroy_book_path" rel="nofollow" data-method="delete" href="/book/#{book.id}">Destroy</a>
+            <% if @book.user == current_user %>
+              <%= link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？"%>
+            <% end %>
         </td>
       </tr>
     </tbody>

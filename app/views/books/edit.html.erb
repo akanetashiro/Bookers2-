@@ -9,6 +9,9 @@
   </ul>
 <% end %>
 
+<%= form_with model: @book , url: update_book_path(@book.id), method: :patch do |f| %>
+
+
 <p id="notice"></p>
 <div class="contaier">
   <div class="row">
@@ -35,6 +38,7 @@
   </div>
 </div>
 
+<% end %>
 <!--<#%= form_with model: @book do |f| %>-->
 
 <!--  <h4>title</h4>-->

@@ -1,4 +1,4 @@
-<%= render 'users/show' %>
+<%= render 'users/show', user: @user %>
 
 <div class="col-md-8 offset-md-1">
   <h2>Users</h2>
@@ -10,8 +10,18 @@
         <th colspan="3"></th>
       </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= image_tag user.get_profile_image(100,100) %></td>
+        <td><%= user.name %></td>
+        <td>
+          <%= link_to user_path(user.id) do %>
+          show
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
-      
- 
 </div>

@@ -1,6 +1,6 @@
 <%= flash[:pfupdate] %>
 
-<%= render 'show' %>
+<%= render 'show', user: @user %>
 
 
 <div class="col-md-8 offset-md-1">
@@ -15,12 +15,18 @@
       </tr>
     </thead>
     <tbody>
+      <% @books.each do |book| %>
       <tr>
-        <th><%#= image_tag book.user.get_profile_image(100,100) %></th>
-        <th><%#= book.title %></th>
-        <th><%#= book.body %></th>
+        <th><%= image_tag book.user.get_profile_image(100,100) %></th>
+        <th>
+          <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+          <% end %>
+        </th>
+        <th><%= book.body %></th>
         <th></th>
       </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

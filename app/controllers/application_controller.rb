@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+  add_flash_types :log_in, :log_out, :new
+  
 
   protected
 
