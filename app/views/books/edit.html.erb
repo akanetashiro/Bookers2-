@@ -9,36 +9,33 @@
   </ul>
 <% end %>
 
-<%= form_with model: @book , url: update_book_path(@book.id), method: :patch do |f| %>
 
 
 <p id="notice"></p>
 <div class="contaier">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <%= form_with model:@book, url: book_path(@book.id), method: :patch do |f| %>
       <h1>Editing Book</h1>
-      <form action="/books/:id" accept-charset="UTF-8" method="post">
-        <input type="hidden" name="_method" value="patch" autocomplete="off">
         <div class="form-group">
           <label for="book_title">Title</label>
-          <input class="form-control book_title" type="text" name="book[title]" id="book_title">
+          <%= f.text_field :title, class:"form-control book_title" %>
         </div>
          <div class="form-group">
           <label for="book_opinion">Opinion</label>
-          <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
+          <%= f.text_area :body, class: "form-control book_body"%>
         </div>
          <div class="form-group">
-           <input type="submit" name="commit" value="Update Book" class="btn btn-success" data-disable-with="Update Book">
+           <%= f.submit 'Update Book', class: "btn btn-success" %>
          </div>
-      </form>
-      <a class="book_id" href="/book/:id">Show</a>
+      <% end %>
+      <%= link_to book_path(@book.id) do %>Show<% end %>
       |
-      <a class="back" href="/books">Back</a>
+      <%= link_to books_path do %>Back<% end %>
     </div>
   </div>
 </div>
 
-<% end %>
 <!--<#%= form_with model: @book do |f| %>-->
 
 <!--  <h4>title</h4>-->
